@@ -4,6 +4,11 @@ on:
   push:
     branches: [ master, main ]
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version label for artifacts (e.g. 1.5.33)'
+        required: false
+        default: '1.5.33'
 
 jobs:
   build:
@@ -19,6 +24,15 @@ jobs:
           distribution: temurin
           java-version: 8
 
+      - name: Set version variable
+        id: ver
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=1.5.33" >> $GITHUB_OUTPUT
+          fi
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
@@ -28,7 +42,7 @@ jobs:
       - name: Upload main jar
         uses: actions/upload-artifact@v4
         with:
-          name: Draconic-Evolution-main
+          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}
           path: |
             build/libs/*.jar
             !build/libs/*-api.jar
@@ -38,20 +52,20 @@ jobs:
       - name: Upload api jar
         uses: actions/upload-artifact@v4
         with:
-          name: Draconic-Evolution-api
+          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-api
           path: build/libs/*-api.jar
           if-no-files-found: ignore
 
       - name: Upload dev jar
         uses: actions/upload-artifact@v4
         with:
-          name: Draconic-Evolution-dev
+          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-dev
           path: build/libs/*-dev.jar
           if-no-files-found: ignore
 
       - name: Upload sources jar
         uses: actions/upload-artifact@v4
         with:
-          name: Draconic-Evolution-sources
+          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-sources
           path: build/libs/*-sources.jar
           if-no-files-found: ignore
