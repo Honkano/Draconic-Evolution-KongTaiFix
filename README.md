@@ -24,9 +24,15 @@ This repository is an **unofficial compatibility fork** of [GTNewHorizons/Dracon
 
 ### 目的 / Purpose
 
-本分支的核心目的，是解决 **工业升级2 (Industrial Upgrade 2)** 与 **最新版格雷版龙之研究** 之间的兼容性崩溃问题。它面向那些**正在使用工业升级2**，但**又希望使用最新格雷版龙之研究**的玩家。
+中文：
 
-The primary goal of this fork is to resolve a compatibility crash between **Industrial Upgrade 2** and the **latest GTNH version of Draconic Evolution**. It is intended for players who **use Industrial Upgrade 2** and **want to run the latest GTNH version of Draconic Evolution** at the same time.
+- 本分支的核心目的，是解决 工业升级2.5.21 Mod (Industrial Upgrade 2) 与 最新版格雷版龙之研究 之间的兼容性崩溃问题。注意：本修复仅保证与工业升级2.5.21版本兼容，且游戏版本必须为 Minecraft 1.7.10。其他版本的工业升级2或非 1.7.10 的游戏版本，兼容性均不予保证。 它面向那些正在- 使用工业升级2.5.21，但又希望使用最新格雷版龙之研究的玩家。
+
+English:
+
+- The primary goal of this fork is to resolve a compatibility crash between Industrial Upgrade 2.5.21 Mod (Industrial Upgrade 2) and the latest GTNH version of Draconic Evolution. Note: This fix is only guaranteed to be compatible with Industrial
+- Upgrade 2.5.21 and Minecraft 1.7.10. Compatibility with other versions of Industrial Upgrade 2 or non-1.7.10 game versions is not guaranteed. It is intended for players who use Industrial Upgrade 2.5.21 and want to run the latest GTNH version of
+- Draconic Evolution at the same time.
 
 ### 当前状态 / Current Status
 
