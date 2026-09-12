@@ -1,7 +1,7 @@
 _______________________________________________________________
-# Draconic Evolution - GTNH (KongTai Fix)
+# Draconic Evolution - GTNH (KongTai Fix)  适用于1.7.10 版本 For | version 1.7.10
 
-> 一个专注于兼容性的非官方修复分支。
+> 一个专注于兼容性的非官方修复分支。 For version 1.7.10
 >
 > An unofficial compatibility fork.
 _______________________________________________________________
