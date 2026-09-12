@@ -25,8 +25,33 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Upload jar as artifact
+      - name: Upload main jar
         uses: actions/upload-artifact@v4
         with:
-          name: Draconic-Evolution-KongTai-Fix
-          path: build/libs/*.jar
+          name: Draconic-Evolution-main
+          path: |
+            build/libs/*.jar
+            !build/libs/*-api.jar
+            !build/libs/*-dev.jar
+            !build/libs/*-sources.jar
+
+      - name: Upload api jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: Draconic-Evolution-api
+          path: build/libs/*-api.jar
+          if-no-files-found: ignore
+
+      - name: Upload dev jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: Draconic-Evolution-dev
+          path: build/libs/*-dev.jar
+          if-no-files-found: ignore
+
+      - name: Upload sources jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: Draconic-Evolution-sources
+          path: build/libs/*-sources.jar
+          if-no-files-found: ignore
