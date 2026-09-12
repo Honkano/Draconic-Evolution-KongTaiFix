@@ -1,0 +1,108 @@
+package com.brandon3055.draconicevolution;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+
+import com.brandon3055.draconicevolution.client.ClientProxy;
+import com.brandon3055.draconicevolution.client.creativetab.DETab;
+import com.brandon3055.draconicevolution.common.CommonProxy;
+import com.brandon3055.draconicevolution.common.lib.OreDoublingRegistry;
+import com.brandon3055.draconicevolution.common.lib.References;
+import com.brandon3055.draconicevolution.common.utills.LogHelper;
+
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStoppedEvent;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+
+@Mod(
+        modid = References.MODID,
+        name = References.MODNAME,
+        version = References.VERSION,
+        canBeDeactivated = false,
+        guiFactory = References.GUIFACTORY,
+        dependencies = "after:NotEnoughItems;" + "after:ThermalExpansion;"
+                + "after:ThermalFoundation;"
+                + "required-after:gtnhlib@[0.9.47,);")
+public class DraconicEvolution {
+
+    @Mod.Instance(References.MODID)
+    public static DraconicEvolution instance;
+    @SidedProxy(
+            clientSide = "com.brandon3055.draconicevolution.client.ClientProxy",
+            serverSide = "com.brandon3055.draconicevolution.common.CommonProxy")
+    public static CommonProxy proxy;
+
+    public static CreativeTabs tabToolsWeapons = new DETab(
+            CreativeTabs.getNextID(),
+            References.MODID,
+            "toolsAndWeapons",
+            0);
+    public static CreativeTabs tabBlocksItems = new DETab(
+            CreativeTabs.getNextID(),
+            References.MODID,
+            "blocksAndItems",
+            1);
+
+    public static final String networkChannelName = "DEvolutionNC";
+    public static SimpleNetworkWrapper network;
+
+    public static boolean debug = false; // todo
+
+    public static Enchantment reaperEnchant;
+
+    public static final boolean isAutomagyLoaded = Loader.isModLoaded("Automagy");
+    public static final boolean isEioLoaded = Loader.isModLoaded("EnderIO");
+
+    public DraconicEvolution() {
+        LogHelper.info("Hello Minecraft!!!");
+    }
+
+    public static ClientProxy clientProxy() {
+        if (proxy.isClient()) {
+            return ((ClientProxy) proxy);
+        }
+        throw new IllegalStateException("Accessed ClientProxy from dedicated server");
+    }
+
+    @Mod.EventHandler
+    public static void preInit(final FMLPreInitializationEvent event) {
+        if (debug) LogHelper.info("Initialization");
+        proxy.preInit(event);
+    }
+
+    @Mod.EventHandler
+    public void init(final FMLInitializationEvent event) {
+        if (debug) System.out.println("init()");
+        proxy.init(event);
+    }
+
+    @Mod.EventHandler
+    public void postInit(final FMLPostInitializationEvent event) {
+        if (debug) System.out.println("postInit()");
+        proxy.postInit(event);
+    }
+
+    @Mod.EventHandler
+    public void onServerStopped(final FMLServerStoppedEvent event) {
+        if (debug) System.out.println("onServerStopped()");
+        proxy.onServerStopped(event);
+    }
+
+    @Mod.EventHandler
+    public void processMessage(FMLInterModComms.IMCEvent event) {
+        for (FMLInterModComms.IMCMessage m : event.getMessages()) {
+            LogHelper.info(m.key);
+            if (m.isItemStackMessage() && m.key.contains("addChestRecipe:")) {
+                String s = m.key.substring(m.key.indexOf("addChestRecipe:") + 15);
+                OreDoublingRegistry.resultOverrides.put(s, m.getItemStackValue());
+                LogHelper.info("Added Chest recipe override: " + s + " to " + m.getItemStackValue());
+            }
+        }
+    }
+}
