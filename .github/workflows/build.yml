@@ -42,7 +42,7 @@ jobs:
       - name: Upload main jar
         uses: actions/upload-artifact@v4
         with:
-          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}
+          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-[KongTaiFix]
           path: |
             build/libs/*.jar
             !build/libs/*-api.jar
@@ -52,20 +52,20 @@ jobs:
       - name: Upload api jar
         uses: actions/upload-artifact@v4
         with:
-          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-api
+          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-api-[KongTaiFix]
           path: build/libs/*-api.jar
           if-no-files-found: ignore
 
       - name: Upload dev jar
         uses: actions/upload-artifact@v4
         with:
-          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-dev
+          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-dev-[KongTaiFix]
           path: build/libs/*-dev.jar
           if-no-files-found: ignore
 
       - name: Upload sources jar
         uses: actions/upload-artifact@v4
         with:
-          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-sources
+          name: Draconic-Evolution-GTNH-${{ steps.ver.outputs.VERSION }}-sources-[KongTaiFix]
           path: build/libs/*-sources.jar
           if-no-files-found: ignore
