@@ -1,8 +1,18 @@
-# Draconic Evolution (KongTai Fix)
+_______________________________________________________________
+# Draconic Evolution - GTNH (KongTai Fix)
 
 > 一个专注于兼容性的非官方修复分支。
 >
 > An unofficial compatibility fork.
+_______________________________________________________________
+
+中文
+
+本分支由空太（KongTai）与 AI 助手共同开发与维护。未来可能会新增一些物品或功能，但所有新增内容都将继续遵循原项目的 LGPL 协议。原作者的版权与知识产权始终归 brandon3055 及 GTNH 团队所有。我永远不会声称自己是原作者，也永远尊重并感谢原作者的贡献。
+
+English
+
+This fork is developed and maintained by KongTai with the assistance of an AI assistant. New items or features may be added in the future, but all additions will continue to follow the original project's LGPL license. All original copyrights and intellectual property remain with brandon3055 and the GTNH team. I will never claim to be the original author, and I will always respect and appreciate the original authors' contributions.
 
 ---
 
@@ -123,3 +133,5 @@ If you encounter any problems or have suggestions, please reach out via:
 *我是空太 (KongTai)，一个想为 1.7.10 社区做点事的普通玩家。*
 
 *I am KongTai, a regular player hoping to contribute something to the 1.7.10 community.*
+
+
