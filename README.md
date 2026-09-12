@@ -1,9 +1,12 @@
 _______________________________________________________________
-# Draconic Evolution - GTNH (KongTai Fix)  适用于1.7.10 版本 For | version 1.7.10
+# Draconic Evolution - GTNH [ 1.7.10 ] (KongTai Fix) 
 
-> 一个专注于兼容性的非官方修复分支。 For version 1.7.10
->
-> An unofficial compatibility fork.
+**Minecraft 版本 / Minecraft Version: 1.7.10**
+**模组版本 / Mod Version: 1.5.33-GTNH**
+
+一个专注于兼容性的非官方修复分支，旨在让工业升级2.5.21与最新格雷版龙之研究共存。
+
+An unofficial compatibility fix fork, designed to let Industrial Upgrade 2.5.21 and the latest GTNH version of Draconic Evolution work together.
 _______________________________________________________________
 
 中文
